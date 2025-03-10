@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    direction: rtl;
+  }
+
+  body {
+    @apply font-vazir bg-background text-foreground antialiased;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/90 backdrop-blur-sm border-white/20 shadow-lg;
+  }
+
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg transition-all duration-300 hover:shadow-xl;
+  }
+
+  .clay-button {
+    @apply relative rounded-lg bg-white shadow-[4px_4px_10px_0px_rgba(0,0,0,0.1),-4px_-4px_10px_0px_rgba(255,255,255,0.8)] 
+           hover:shadow-[6px_6px_12px_0px_rgba(0,0,0,0.15),-6px_-6px_12px_0px_rgba(255,255,255,0.9)] 
+           active:shadow-[2px_2px_5px_0px_rgba(0,0,0,0.1),-2px_-2px_5px_0px_rgba(255,255,255,0.8)]
+           transition-all duration-200 border border-white/40;
+  }
+
+  .clay-icon {
+    @apply w-16 h-16 rounded-2xl bg-white shadow-[8px_8px_16px_0px_rgba(0,0,0,0.1),-8px_-8px_16px_0px_rgba(255,255,255,0.8)] 
+           hover:shadow-[12px_12px_20px_0px_rgba(0,0,0,0.15),-12px_-12px_20px_0px_rgba(255,255,255,0.9)]
+           flex items-center justify-center transition-all duration-300 relative;
+  }
+
+  .clay-icon::before {
+    content: '';
+    @apply absolute inset-0 rounded-2xl bg-gradient-to-br from-white/30 to-white/10 z-10;
+  }
+
+  .clay-icon > * {
+    @apply relative z-20;
+  }
+
+  .nav-link {
+    @apply px-4 py-2 text-gray-700 hover:text-primary transition-colors duration-300;
+  }
+
+  .heading-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80;
+  }
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.1);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+@keyframes button-glow {
+  0% {
+    transform: translate(-50%, 80%) rotate(45deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -80%) rotate(45deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -200%) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.animate-button-glow {
+  animation: button-glow 2s ease-in-out infinite;
+}
